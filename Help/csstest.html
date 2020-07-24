@@ -1,0 +1,997 @@
+<html>
+<head>
+	<title> Help </title>
+    <link rel="stylesheet" href="ext.css">
+    <script>
+		 
+		function show(target){    
+			var list = {
+					"ArithematicGroup": ArithematicGroup, 
+					"DataTransferGroup":DataTransferGroup, 
+					"MachineControl": MachineControl, 
+					"BranchingGroup": BranchingGroup, 
+					"LogicalGroup": LogicalGroup
+				}
+			for(element in list){
+				list[element].style.display = "none"
+			}
+			var x = list[target]
+			if (x.style.display === "none"){
+				x.style.display = "block";
+			}
+			else{
+				x.style.display = "none";
+			}	
+        }
+    </script>
+</head>
+<body class="w3-theme-d1">
+	<div class= "grid">
+		<div class="title">
+			<h1> The 8085 Instruction Set </h1>
+		</div>
+
+		<div class="sidebar">
+			<div id="dtc" onclick="show('DataTransferGroup')">
+				Data Transfer(COPY) Operations
+			</div><br>
+			<div id="ao" onclick="show('ArithematicGroup')">Arithematic Operations</div><br>
+			<div id="lo" onclick="show('LogicalGroup')">Logical Operations</div><br>
+			<div id="bo" onclick="show('BranchingGroup')">Branching Operations </div><br>
+			<div id="mco" onclick="show('MachineControl')">Machine Control Operations</div>
+		</div>
+
+		<div class="content">
+
+			<div id="ArithematicGroup">
+				<h2>Arithmetic instructions in 8085 microprocessor</h2>
+				<p>Arithmetic Instructions are the instructions which perform basic arithmetic operations such as addition, subtraction and a few more. In 8085 microprocessor, the destination operand is generally the accumulator. 
+					In 8085 microprocessor, the destination operand is generally the accumulator.</p>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ACI: Add Immediate to Accumulator with Carry</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) and the carry flag is added to the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of addition.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ADC: Add Register to Accumulator with Carry</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) and the carry flag is added to the contents of the Accumulator, and the result is stored in the accumulator.
+						However the previous carry flag is reset.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of addition.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ADD: Add Register to Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) is added to the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of the addition.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ADI: Add Immediate to Accumulator</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) are added to the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the results of the addition.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>SBB: Subtract Source and Borrow from Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) and the Borrow flag are subtracted from the contents of the Accumulator, and the results are stored in the accumulator.
+						However the previous Borrow flag is reset.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of subtraction.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>SBI: Subtract Immediate with Borrow</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) and the borrow flag are subtracted from the contents of the Accumulator, and the results are placed in the accumulator.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of addition.
+					</p>
+					</div>
+                </div>			
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>SUB: Subtract Register or Memory from Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) is subtracted from the contents of the Accumulator, and the result is stored in the accumulator.
+						The contents of the source are not altered.<br>
+						<br><b>Flags:</b> All flags are modified to reflect the result of the subtraction.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>SUI: Subtract Immediate from Accumulator</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) are subtracted from the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> All flags are modified to reflect the results of the subtraction.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3> INR: Increment Contents of Register/Memory by 1 </h3>
+					<p>
+						The contents of the designated register/memory is incremented by 1 and the  results are stored in the same place. 
+						If the operand is a memory location, it is specified by the contents of the HL register pair.<br>
+						<br><b>Flags:</b> S, Z, AC, PC flags are altered to reflect the results of the operation. CY is not modified.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>INX: Increment Register Pair  by 1</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the specified register pair are incremented by 1. This instruction views the contents of the two registers as a 16-bit number.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>DCR: Decrement Source by 1</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the designated register/memory is decremented by 1 and the  results are stored in the same place. If the operand is a memory location, it is specified by the contents of the HL register pair.<br>
+						<br><b>Flags:</b> S, Z, AC, PC flags are altered to reflect the results of the operation. CY is not modified.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>DCX: Decrement Register Pair  by 1</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the specified register pair are decremented by 1. This instruction views the contents of the two registers as a 16-bit number.
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>DAA: decimal-adjust Accumulator</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the accumulator are changed from a binary value to two 4-bit binary-coded decimal (BCD) digits. This is the only instruction that uses the auxiliary flag (internally) to perform the binary-to-BCD conversion.
+						<br>
+						<br><b>Flags:</b> S, Z, AC, PC, CY flags are altered to reflect the results of the operation.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>DAD: Add Register Pair to H and L Registers</h3>
+					<p>
+						<b>Description:</b> The 16-bit contents of the specified register pair are added to the contents of the HL register and the sum is asved in the HL register. The contents of the source registerpair are not altered.<br>
+						<br><b>Flags:</b> If the result is larger than 16 bits the CY flag is set. No other falgs are affected.
+					</p>
+					</div>
+				</div>				
+			</div>
+
+
+			<div id = "LogicalGroup">
+				<h2> Logical Instructions in 8085 Microprocessor</h2>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ANA: Logical AND with Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) are logically ANDed with the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> S, Z, P are modified to reflect the result of the operation. CY is reset. In 8085, AC is set.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ANI: AND Immediate with Accumulator</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) is ANDed with the contents of the Accumulator, and the results are stored in the accumulator.
+						<br><b>Flags:</b> S, Z, P are modified to reflect the result of the operation. CY is reset. In 8085, AC is set.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>ORA: Logically OR with Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) are logically ORed with the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> S,Z, P are modified to reflect the result of the operation. CY and AC are reset.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>ORI: Logically OR Immediate</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) and the carry flag is ANDed with the contents of the Accumulator, and the results are stored in the accumulator.
+						<br><b>Flags:</b> S,Z, P are modified to reflect the result of the operation. CY and AC are reset.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>XRA: Exclusive OR with Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) are Exclusive ORed with the contents of the Accumulator, and the result is stored in the accumulator.
+						<br>
+						<br><b>Flags:</b> S,Z, P are modified to reflect the result of the operation. CY & AC is reset.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>XRI: Exclusive OR Immediate with Accumulator</h3>
+					<p>
+						<b>Description:</b> The 8-bit data(operand) are Exclusive ORed with the contents of the Accumulator, and the results are stored in the accumulator.
+						<br><b>Flags:</b> S,Z, P are modified to reflect the results of the operation. CY & AC are reset.
+					</p>
+					</div>
+				</div>
+
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>CMP: Compare with Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the operand(register or memory) are compared with the contents of the accumulator. Both the contents are preserved and the comparison is shown by setting the flags as follows:<br><br>
+						<p style="margin-left: 5%;">
+							If(A) < (Reg/Mem): Carry flag is set and Zero flag is reset.<br><br>
+						If(A) = (Reg/Mem): Zero flag is set and Carry flag is reset.<br><br>
+						if(A) > (Reg/Mem): Carry and Zero flags are reset.<br><br>
+						</p>
+
+						The comparison of two bytes is performed by subtracting the contents of the operand from the contents of the accumulator, However, neither contents are modified.
+						<br>
+						<br><b>Flags:</b> S, P, AC are also modified in addition to Z, and CY to reflect the results of the operation.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>CPI: Compare Immediate with Accumulator</h3>
+					<p>
+						<b>Description:</b> The second byte (8-bit data) is compared with the contents of the accumulator. Both the contents are preserved and the comparison is shown by setting the flags as follows:<br>
+						<br>
+						<p style="margin-left: 5%">
+							If(A) &lt; (Reg/Mem): Carry flag is set and Zero flag is reset.<br><br>
+							If(A) = (Reg/Mem): Zero flag is set and Carry flag is reset.<br><br>
+							if(A) &gt; (Reg/Mem): Carry and Zero flags are reset.<br><br>
+						</p>
+
+						The comparison of two bytes is performed by subtracting the data byte from the contents of the accumulator. However, neither contents are modified.
+						<br>
+						<br><b>Flags:</b> S, P, AC are also modified in addition to Z, and CY to reflect the results of the operation.
+					</p>
+					</div>
+                </div>
+
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>CMA: Complement Accumulator</h3>
+					<p>
+						<b>Description:</b> The contents of the accumulator are complemented.
+						<br>
+						<br><b>Flags:</b> No Flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RAL: Rotate Accumulator Left through Carry </h3>
+					<p>
+						<b>Description:</b>  Each binary bit of the Accumulator is rotated left by one position through the carry flag. Bit D<sub>7</sub> is placed in the 
+						Carry flag and the bit in the Carry flag is placed in the least significant position D<sub>0</sub>.
+						<br>
+						<br><b>Flags:</b> CY is modified according to bit D<sub>7</sub>. S, Z, AC, P are not affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RAR: Rotate Accumulator Right through Carry </h3>
+					<p>
+						<b>Description:</b>  Each binary bit of the Accumulator is rotated right by one position through the carry flag. Bit D<sub>0</sub> is placed in the
+						 Carry flag and the bit in the Carry flag is placed in the most significant position D<sub>7</sub>.
+						<br>
+						<br><b>Flags:</b> CY is modified according to bit D<sub>0</sub>. S, Z, AC, P are not affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RLC: Rotate Accumulator Left</h3>
+					<p>
+						<b>Description:</b>  Each binary bit of the Accumulator is rotated left by one position. Bit D<sub>7</sub> is placed in the 
+						position of D<sub>0</sub>. as well as in the Carry flag.
+						<br>
+						<br><b>Flags:</b> CY is modified according to bit D<sub>7</sub>. S, Z, AC, P are not affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RRC: Rotate Accumulator Right </h3>
+					<p>
+						<b>Description:</b>  Each binary bit of the Accumulator is rotated right by one position. Bit D<sub>0</sub> is placed in the
+						position of D<sub>7</sub>. as well as in the Carry flag.
+						<br>
+						<br><b>Flags:</b> CY is modified according to bit D<sub>0</sub>. S, Z, AC, P are not affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>CMC: Complement Carry</h3>
+					<p>
+						<b>Description:</b> The Carry flag is compllemented.
+						<br>
+						<br><b>Flags:</b> The Carry Flag is affecteed. No other Flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>STC: Set Carry</h3>
+					<p>
+						<b>Description:</b> 
+						The Carry flag is set to 1<br>
+						<br><b>Flags:</b> No other flags are affected.
+					</p>
+					</div>
+				</div>
+                
+			</div>
+
+			<div id= "MachineControl">
+				<h2> Machine Control instructions in 8085 Microprocessor</h2>
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>HLT: Halt and Enter Wait State</h3>
+					<p>
+						<b>Description:</b> The MPU finishes executting the current instruction and halts any further execution. The MPU enters the Halt Acknowledge
+						machine cycle and Wait states are inserted inn every clock period. The address and the data bus are placed in high impedance state. 
+						The contents of the registers are unaffected during the HLT state. An interrupt or reset is necessary to exit from the Halt state.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>NOP: No Operation</h3>
+					<p>
+						<b>Description:</b> 
+						No Operation is performed. the instruction is fetched and decoded; however no operation is executed.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>DI: Disable Interrupts</h3>
+					<p>
+						<b>Description:</b> The Interrupt Enable flip-flop is reset and all the Interrupts except the TRAP(8085) are disabled.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>EI: Enable Interrupts</h3>
+					<p>
+						<b>Description:</b> The Interrupt Enable flip-flop is set and all the Interrupts are enabled.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+			
+
+			<div class = "Descriptions">
+				<div class="container">
+				<h3>RIM: Read interrupt mask</h3>
+				<p>
+					<b>Description:</b> 
+					This instruction is used to read the status of interrupts 7.5, 6.5, 5.5 and read serial data input bit.
+					<br>
+					<br><b>Flags:</b> No flags are affected.
+				</p>
+				</div>
+			</div>
+
+			<div class = "Descriptions">
+				<div class="container">
+				<h3>SIM: Set interrupt mask</h3>
+				<p>
+					<b>Description:</b> 
+					This instruction is used to implement the interrupts 7.5, 6.5, 5.5, and serial data output.
+					<br>
+					<br><b>Flags:</b> No flags are affected.
+				</p>
+				</div>
+			</div>
+			</div>
+
+			<div id = "BranchingGroup">
+				<h2> Branching instructions in 8085 Microprocessor</h2>
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>JMP: Jump Unconditionally</h3>
+					<p>
+						<b>Description:</b> The program sequence is transferred to the address specified by the 16-bit address.
+						This is a 3-byt instruction; the second byte specifies he low-order byte and the third byte specifies the 
+						high-order byte. <br>
+						<br><b>Flags:</b> No Flags are affected.
+					</p>
+					</div>
+					
+					<div class="container">
+						<h3>Jump Conditionally</h3>
+						<p> Operand: 16 Bit Address</p>
+					<table>
+						<tr>
+							<td><b>Opcode</b></td>
+							<td><b>Description</b></td>
+							<td><b>Flag Status</b></td>
+							<td><b>Hex Code</b></td>
+						</tr>
+						<tr>
+							<td>JC</td>
+							<td>Jump on Carry</td>
+							<td>CY = 1</td>
+							<td>DA</td>
+						</tr>
+						<tr>
+							<td>JNC</td>
+							<td>Jump with No Carry</td>
+							<td>CY = 0</td>
+							<td>D2</td>
+						</tr>
+						<tr>
+							<td>JP</td>
+							<td>Jump on Positive</td>
+							<td>S = 0</td>
+							<td>F2</td>
+						</tr>
+						<tr>
+							<td>JM</td>
+							<td>Jump on Minus</td>
+							<td>S = 1</td>
+							<td>FA</td>
+						</tr>
+						<tr>
+							<td>JPE</td>
+							<td>Jump on Parity Even</td>
+							<td>P=1</td>
+							<td>EA</td>
+						</tr>
+						<tr>
+							<td>JPO</td>
+							<td>Jump on Parrity Odd</td>
+							<td>P = 0</td>
+							<td>E2</td>
+						</tr>
+						<tr>
+							<td>JZ</td>
+							<td>Jump on Zero</td>
+							<td>Z = 1</td>
+							<td>CA</td>
+						</tr>
+						<tr>
+							<td>JNZ</td>
+							<td>Jump on No Zero</td>
+							<td>Z = 0</td>
+							<td>C2</td>
+						</tr>
+					</table>
+					<br>
+					<br><b>Flags:</b> No Flags are affected.
+					</div>
+				</div>
+                <br>
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>CALL: Unconditional Subroutine Call</h3>
+					<p>
+						<b>Description:</b> The program sequence is transferred to the address specified by the operand. Before the transfer, the address of the next instruction to CALL (the contents of the program counter) is pushed on the Stack.
+						<br>
+						<br><b>Flags:</b> No Flags are affected.
+					</p>
+					</div>
+					
+					<div class="container">
+						<h3>Conditional Call to Subroutine </h3>
+						<p>Operand - 16 Bit Address</p>
+					<table>
+						<tr>
+							<td><b>Opcode</b></td>
+							<td><b>Description</b></td>
+							<td><b>Flag Status</b></td>
+							<td><b>Hex Code</b></td>
+						</tr>
+						<tr>
+							<td>CC</td>
+							<td>Call on Carry</td>
+							<td>CY = 1</td>
+							<td>DC</td>
+						</tr>
+						<tr>
+							<td>CNC</td>
+							<td>Call with No Carry</td>
+							<td>CY = 0</td>
+							<td>D4</td>
+						</tr>
+						<tr>
+							<td>CP</td>
+							<td>Call on Positive</td>
+							<td>S = 0</td>
+							<td>F4</td>
+						</tr>
+						<tr>
+							<td>CM</td>
+							<td>Call on Negative</td>
+							<td>S = 1</td>
+							<td>FC</td>
+						</tr>
+						<tr>
+							<td>CPE</td>
+							<td>Call on Parity Even</td>
+							<td>P=1</td>
+							<td>EC</td>
+						</tr>
+						<tr>
+							<td>CPO</td>
+							<td>Call on Parrity Odd</td>
+							<td>P = 0</td>
+							<td>E4</td>
+						</tr>
+						<tr>
+							<td>CZ</td>
+							<td>Call on Zero</td>
+							<td>Z = 1</td>
+							<td>CC</td>
+						</tr>
+						<tr>
+							<td>CNZ</td>
+							<td>Call on No Zero</td>
+							<td>Z = 0</td>
+							<td>C4</td>
+						</tr>
+					</table>
+					<br>
+					<br><b>Flags:</b> No Flags are affected.
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RET:	Return from subroutine unconditionally</h3>
+					<p>
+						<b>Description:</b> 
+						The program sequence is transferred from the subroutine to the calling program.
+						 <br>
+						<br><b>Flags:</b> No Flags are affected.
+					</p>
+					</div>
+					
+					<div class="container">
+						<h3>Return from subroutine conditionally</h3>
+						<p> Operand: 16 Bit Address</p>
+						The program sequence is transferred from the subroutine to the calling program based on the
+						specified flag of the PSW and the program execution begins at the new address.
+					<table>
+						<tr>
+							<td><b>Opcode</b></td>
+							<td><b>Description</b></td>
+							<td><b>Flag Status</b></td>
+							<td><b>Hex Code</b></td>
+						</tr>
+						<tr>
+							<td>RC</td>
+							<td>Return on Carry</td>
+							<td>CY = 1</td>
+							<td>D8</td>
+						</tr>
+						<tr>
+							<td>RNC</td>
+							<td>Return on No Carry</td>
+							<td>CY = 0</td>
+							<td>D0</td>
+						</tr>
+						<tr>
+							<td>RP</td>
+							<td>Return on Positive</td>
+							<td>S = 0</td>
+							<td>F0</td>
+						</tr>
+						<tr>
+							<td>RM</td>
+							<td>Return on Minus</td>
+							<td>S = 1</td>
+							<td>F8</td>
+						</tr>
+						<tr>
+							<td>RPE</td>
+							<td>Return on Parity Even</td>
+							<td>P=1</td>
+							<td>E8</td>
+						</tr>
+						<tr>
+							<td>RPO</td>
+							<td>Return on Parrity Odd</td>
+							<td>P = 0</td>
+							<td>E0</td>
+						</tr>
+						<tr>
+							<td>RZ</td>
+							<td>Return on Zero</td>
+							<td>Z = 1</td>
+							<td>C8</td>
+						</tr>
+						<tr>
+							<td>RNZ</td>
+							<td>Return on No Zero</td>
+							<td>Z = 0</td>
+							<td>C0</td>
+						</tr>
+					</table>
+					<br>
+					<br><b>Flags:</b> No Flags are affected.
+					</div>
+				</div>
+				<div class = "Descriptions">
+						<div class="container">
+						<h3>PCHL: Load the program counter with HL contents</h3>
+						<p>
+							<b>Description:</b> 
+							The contents of registers H & L are copied into the program counter. 
+							The contents of H are placed as the high-order byte and the contents of L as the low-order byte.<br>
+							<br><b>Flags:</b> No flags are affected.
+						</p>
+						</div>
+				</div>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>RST: Restart</h3>
+					<p>
+						<b>Description:</b> 
+						The RST instruction is used as software instructions in a program to transfer the program execution to one of the following eight locations.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					<table>
+						<tr>
+							<td>Opcode/Operand</td>
+							<td>Restart Address</td>
+						</tr>
+						<tr>
+							<td>RST 0</td>
+							<td>0000H</td>
+						</tr>
+						<tr>
+							<td>RST 1</td>
+							<td>0008H</td>
+						</tr>
+						<tr>
+							<td>RST 2</td>
+							<td>0010H</td>
+						</tr>
+						<tr>
+							<td>RST 3</td>
+							<td>0018H</td>
+						</tr>
+						<tr>
+							<td>RST 4</td>
+							<td>0020H</td>
+						</tr>
+						<tr>
+							<td>RST 5</td>
+							<td>0028H</td>
+						</tr>
+						<tr>
+							<td>RST 6</td>
+							<td>0030H</td>
+						</tr>
+						<tr>
+							<td>RST 7</td>
+							<td>0038H</td>
+						</tr>
+					</table>
+					<br>
+					<h3>Additional 8085 Interrupts</h3>
+					The 8085 has additionally 4 interrupts, which can generate RST instructions internally 
+					and doesn’t require any external hardware. Following are those instructions and their Restart addresses −
+					<br>
+					<table>
+						<tr>
+							<td>Interrupt</td>
+							<td>Restart Address</td>
+						</tr>
+						<tr>
+							<td>TRAP</td>
+							<td>0024H</td>
+						</tr>
+						<tr>
+							<td>RST 5.5</td>
+							<td>002CH</td>
+						</tr>
+						<tr>
+							<td>RST 6.5</td>
+							<td>0034H</td>
+						</tr>
+						<tr>
+							<td>RST 7.5</td>
+							<td>003CH</td>
+						</tr>
+					</table>
+					</div>
+				</div>
+
+			</div>
+
+			<div id = "DataTransferGroup">
+				<h2> Data Transfer Instructions in 8085 Microprocessor</h2>
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>MVI: Move Immediate 8-bit</h3>
+					<p>
+						<b>Description:</b> 
+						The 8-bit data are stored in the destination register. If the operand is a memory location,
+						 it is specified by the contents of the HL register pair.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+                </div>
+
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>LXI: Load Register Pair Immediate</h3>
+					<p>
+						<b>Description:</b> 
+						The 16-bit data in the operand is loaded in the designated register pair.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>MOV: Move- Copy from source to Destination</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the source register is copied into the into the destination register. If one of the operand is a memory location,
+						 it is specified by the contents of the HL register pair.
+						The contents of source memory location are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>LDA: Load Accumulator Direct</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of a memory loacation, specified by a 16-bit address in the operand, are copied to the accumulator.
+						The contents of the source are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>LDAX: Load Accumulator Indirect</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of a designated register pair point to a memory locaation. The instruction copies the contents of 
+						that memory location into the accumulator. The contents of neither register pair nor the memory location are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>STA: Store Accumulator Direct</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the accumulator are copied to a memory loacation specified by the operand.
+						The contents of the accumulator are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>STAX: Store Accumulator Indirect</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the accumulator are copied to a memory loacation specified by the contents of the operand (register pair).
+						The contents of the accumulator are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>IN: Input Data to Accumulator from a port with 8-bit Address</h3>
+					<p>
+						<b>Description:</b> The contents of the input port designated in the operand are read and loaded into the accumulator.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+                </div>
+                
+                <div class = "Descriptions">
+					<div class="container">
+					<h3>OUT: Output Data from Accumulator to a port with 8-bit Address</h3>
+					<p>
+						<b>Description:</b> The contents of the accumulaator are copied into the output port designated by the operand.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>LHLD: Load H and L Registers Direct</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the memory location pointed out by the 16-bit address is copied into the L register and copies the contents of the next memory location in register H. 
+						The contents of source memory location are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+				
+				<br>
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>SHLD: Store H and L Registers Direct</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of register L are stored in the memory location pointed out by the 16-bit address in the operand, and copies the contents of the H register are stored in the next memory location. 
+						The contents of HL register pair are not altered.<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>XTHL: Exchange H and L with top of stack</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the L register are exchanged with the stack location pointed out by the contents of the stack pointer register.
+						The contents of the H register are exchanged with the next stack location (SP+1).
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>SPHL: Copy H and L registers to the stack pointer</h3>
+					<p>
+						<b>Description:</b> 
+						The instruction loads the contents of the H and L registers into the stack pointer register. 
+						The contents of the H register provide the high-order address and the contents of the L register 
+						provide the low-order address.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>POP: Pop off stack to the register pair</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the memory location pointed out by the stack pointer register are copied to the low-order register (C, E, L, status flags) of the operand.
+						The stack pointer is incremented by 1 and the contents of that memory location are copied to the high-order register (B, D, H, A) of the operand.
+						The stack pointer register is again incremented by 1.
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>PUSH: Push the register pair onto the stack</h3>
+					<p>
+						<b>Description:</b> 
+						The contents of the register pair designated in the operand are copied onto the stack in the following sequence.
+						The stack pointer register is decremented and the contents of the high order register (B, D, H, A) are copied into that location.
+						The stack pointer register is decremented again and the contents of the low-order register (C, E, L, flags) are copied to that location
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+
+				<div class = "Descriptions">
+					<div class="container">
+					<h3>XCHG: Exchange H and L with D and E</h3>
+					<p>
+						<b>Description:</b>
+						The contents of register H are exchanged with the contents of register D,
+						 and the contents of register L are exchanged with the contents of register E. 
+						<br>
+						<br><b>Flags:</b> No flags are affected.
+					</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="footer">
+			<h2>Developed by Sunil Bahelia</h2>
+
+		</div>
+
+	</div>
+	
+</body>
+
+</html>
