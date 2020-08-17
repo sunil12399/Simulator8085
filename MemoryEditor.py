@@ -1,6 +1,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtGui import QIcon
-
+from PyQt5.QtWidgets import QApplication
 
 class Ui_AddressEditor(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -95,11 +95,7 @@ class Ui_AddressEditor(QtWidgets.QDialog):
             return
         self.close()
 
-    def close(self):
+    def closeEvent(self, event):
         self.parent.MemoryStartAddress = self.MemoryStart.text().upper()
         self.parent.StackPointerAddress = self.SpLocation.text().upper()
-        super(Ui_AddressEditor, self).close()
-
-
-
-
+        self.parent.updateAddresses()

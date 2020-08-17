@@ -48,6 +48,11 @@ class UI_Edit(LatestUI.Ui_MainWindow):
         self.Assembled = 0
         self.CancelledSave = True
 
+    def updateAddresses(self):
+        obj.PC.updateFromString(self.MemoryStartAddress)
+        obj.SP.updateFromString(self.StackPointerAddress)
+        self.showRegisterContents()
+
     def do_something(self):
         try:
             if self.textEdit.toPlainText() == '':
@@ -491,7 +496,7 @@ class UI_Edit(LatestUI.Ui_MainWindow):
             unexpected inputs that may be encountered b the exception.
         """
         self.WarningLabel.setText("")
-        set_empty = lambda item: item.text() if item else ''
+        set_empty = lambda item: item.text().upper() if item else ''
         temp_memory = {}
         num_rows = self.Memory_Widget.rowCount()
         try:
@@ -740,7 +745,7 @@ if __name__ == "__main__":
     app.processEvents()
 
     # Simulate something that takes time
-    time.sleep(2)
+    # time.sleep(2)
 
     ui = UI_Edit()
     ui.setupUiWithVals()

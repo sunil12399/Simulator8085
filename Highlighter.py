@@ -41,7 +41,8 @@ class Highlighter (QSyntaxHighlighter):
            'DAA', 'DAD', 'DCR', 'DCX', 'DI', 'EI', 'HLT', 'IN', 'INX', 'INR', 'NOP',
            'JC', 'JM', 'JMP', 'JNC', 'JNZ', 'JP', 'JPE', 'JPO', 'JZ', 'LDA', 'LDAX', 'LHLD', 'LXI',
            'ORA', 'ORI', 'OUT', 'PCHL', 'POP', 'PUSH', 'RAR', 'RRC', 'RAL', 'RLC', 'RET', 'RC', 'RIM',
-            'RM', 'RNC', 'RPE', 'RP', 'RPO', 'RST', 'RZ', 'RNZ', 'SBB', 'SUB', 'SUI', 'SHLD', 'SIM', 'SPHL', 'STA', 'STAX', 'STC', 'SBI',
+            'RM', 'RNC', 'RPE', 'RP', 'RPO', 'RST', 'RZ', 'RNZ', 'SBB', 'SUB', 'SUI', 'SHLD', 'SIM',
+            'SPHL', 'STA', 'STAX', 'STC', 'SBI',
            'XCHG', 'XRA', 'XRI', 'XTHL'
     ]
 
@@ -56,7 +57,6 @@ class Highlighter (QSyntaxHighlighter):
 
         # All other rules
         rules += [
-
             # From '#' until a newline
             (r';[^\n]*', 0, STYLES['comment']),
 
@@ -64,8 +64,8 @@ class Highlighter (QSyntaxHighlighter):
             (r'\w+[ ]?:', 0, STYLES['labels']),
 
             # hexadecimal values with a whitespace and H at the end for eg 90 H
-            (r'[0-9a-hA-H]{4}[ ]?[h|H]?', 0, STYLES['value']),
-            (r'[0-9a-hA-H]{2}[ ]?[h|H]?', 0, STYLES['value']),
+            (r'[0-9a-hA-H]{4}[ ]?[h|H]', 0, STYLES['value']),
+            (r'[0-9a-hA-H]{2}[ ]?[h|H]', 0, STYLES['value']),
         ]
         # Build a QRegExp for each pattern
         self.rules = [(QRegExp(pat), index, fmt)

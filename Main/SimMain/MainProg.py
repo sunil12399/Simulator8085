@@ -149,8 +149,8 @@ def instructonInterpret(ins, val=None):
         if flags.flag['CY'] or high>9:
             high = high + 6 + flags.flag['AC']
             flags.flag['CY'] = 1 if high>15 else 0
-        high = hex(high)[2:]
-        low = hex(low)[2:]
+        high = hex(high%16)[2:]
+        low = hex(low%16)[2:]
         throwreg('A').update(high.upper() + low.upper())
         pass
 
@@ -248,7 +248,7 @@ def instructonInterpret(ins, val=None):
 
     elif ins == "LDA":
         check16bit(val)
-        eval('A').update(dbfuncs.retrieve_from_memory(val))
+        eval('A').update_from_mem(val)
 
     elif ins == "LDAX":
         checkregpair(val,["B","D"])
@@ -259,14 +259,14 @@ def instructonInterpret(ins, val=None):
         elif i == 3:
             tmp = eval('DE')
             tmp.update(D, E)
-        A = dbfuncs.retrieve_from_memory(tmp.reg)
+        eval('A').update_from_mem(tmp.reg)
 
     elif ins == "LHLD":
         check16bit(val)
-        L.update(dbfuncs.retrieve_from_memory(val))
+        L.update_from_mem(val)
         val = int(val, 16) + 1
         val = dbfuncs.return_address(val)
-        H.update(dbfuncs.retrieve_from_memory(val))
+        H.update_from_mem(val)
         eval('HL').dispatch()
 
     elif ins == "LXI":
@@ -533,7 +533,8 @@ def instructonInterpret(ins, val=None):
         checkNone(val)
         temporary = eval('HL').reg
         temporary1 = SP.pop()
-        HL.reg = temporary
-        SP.push(temporary1)
-
+        HL = eval('HL').mov(temporary1)
+        SP.push(temporary)
+        print("HL contents ", temporary)
+        print("Sp contents ", temporary1)
     return

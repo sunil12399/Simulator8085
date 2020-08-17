@@ -70,8 +70,9 @@ class registers:
         self.length = other.length
         self.dispatch()
 
-    def update_mem(self, addr):
+    def update_from_mem(self, addr):
         self.reg = dbfuncs.retrieve_from_memory(addr)
+        self.dispatch()
         
     def __str__(self):
         return self.reg
@@ -120,7 +121,7 @@ class RegPair:
 
     def updateFromString(self, other):
         self.reg = other
-        self.length = 8
+        self.length = 4
 
     def __str__(self):
         return self.reg
@@ -161,8 +162,10 @@ class StackPointer(RegPair):
             dcr = int(self.reg,16) - 1
             self.reg = hex(dcr)[2:].upper()
             dbfuncs.store_value_to_memory(self.reg, reg[:2])
+            dbfuncs.MemoryTransition[self.reg] = reg[:2]
             self.reg = hex(dcr - 1)[2:].upper()
             dbfuncs.store_value_to_memory(self.reg, reg[2:4])
+            dbfuncs.MemoryTransition[self.reg] = reg[2:4]
         except Exception:
             print("cbxjhnv hcvb")
 
@@ -198,6 +201,8 @@ HL = RegPair(H, L)
 PSW = RegPair(A, Flag)
 PC = RegPair(x1, x1)
 SP = StackPointer(registers("FF"), registers("FF"))
+
+A.register(PSW)
 
 L.register(HL)
 H.register(HL)
